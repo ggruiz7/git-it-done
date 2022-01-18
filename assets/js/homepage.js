@@ -4,6 +4,7 @@ const repoContainerEl = document.querySelector('#repos-container');
 const repoSearchTerm = document.querySelector('#repo-search-term');
 
 const formSubmitHandler = function(event) {
+    // prevent page from refreshing
     event.preventDefault();
 
     // get value from input element
@@ -11,6 +12,9 @@ const formSubmitHandler = function(event) {
 
     if (username) {
         getUserRepos(username);
+
+        // clear old content
+        repoContainerEl.textContent = "";
         nameInputEl.value = "";
     }
     else {
@@ -27,7 +31,9 @@ const getUserRepos = function(user) {
     .then(function(response) {
         // request was successful
         if (response.ok) {
+            console.log(response);
             response.json().then(function(data) {
+                console.log(data);
                 displayRepos(data, user);
             })
         }
@@ -50,6 +56,8 @@ const displayRepos = function(repos, searchTerm) {
 
     // clear old cantent
     repoContainerEl.textContent = "";
+
+    // insert new content
     repoSearchTerm.textContent = searchTerm;
 
     // loop over repos
@@ -88,4 +96,5 @@ const displayRepos = function(repos, searchTerm) {
     }
 }
 
+// event listener for form
 userFormEl.addEventListener('submit', formSubmitHandler);
