@@ -24,7 +24,7 @@ const getRepoName = function() {
 const getRepoIssues = function(repo) {
     const apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
 
-    // mkae a get request to url
+    // make a get request to url
     fetch(apiUrl)
     .then(function(response) {
         // request was successful
@@ -52,6 +52,7 @@ const displayIssues = function(issues) {
         return;
     }
 
+    // loop over given issues
     for (let i = 0; i < issues.length; i++) {
         // create a link element to take users to the issue on github
         const issueEl = document.createElement('a');
@@ -80,6 +81,7 @@ const displayIssues = function(issues) {
         // append to container
         issueEl.appendChild(typeEl);
 
+        // append to DOM
         issueContainerEl.appendChild(issueEl);
     }
 };
@@ -88,6 +90,7 @@ const displayWarning = function(repo) {
     // add text to warning container
     limitWarningEl.textContent = "To see more than 30 issues, visit ";
 
+    // create link element
     const linkEl = document.createElement('a');
     linkEl.textContent = "GitHub.com";
     linkEl.setAttribute('href', "https://github.com/" + repo + "/issues");

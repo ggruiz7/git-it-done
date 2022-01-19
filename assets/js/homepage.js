@@ -38,7 +38,7 @@ const getUserRepos = function(user) {
             })
         }
         else {
-            alert("Error: GitHub User Not Found");
+            alert("Error: " + response.statusText);
         }
     })
     .catch(function(error) {
@@ -65,12 +65,10 @@ const displayRepos = function(repos, searchTerm) {
         // format repo name
         const repoName = repos[i].owner.login + "/" + repos[i].name;
 
-        const repo = "./single-repo.html?repo=" + repoName;
-
         // create a link for each repo
         const repoEl = document.createElement('a');
         repoEl.classList = "list-item flex-row justify-space-between align-center";
-        repoEl.setAttribute('href', repo);
+        repoEl.setAttribute('href', "./single-repo.htlm?repo=" + repoName);
 
         // create a span element to hold repo name
         const titleEl = document.createElement('span');
