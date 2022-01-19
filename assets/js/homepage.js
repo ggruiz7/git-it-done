@@ -68,7 +68,7 @@ const displayRepos = function(repos, searchTerm) {
         // create a link for each repo
         const repoEl = document.createElement('a');
         repoEl.classList = "list-item flex-row justify-space-between align-center";
-        repoEl.setAttribute('href', "./single-repo.htlm?repo=" + repoName);
+        repoEl.setAttribute('href', "./single-repo.html?repo=" + repoName);
 
         // create a span element to hold repo name
         const titleEl = document.createElement('span');
